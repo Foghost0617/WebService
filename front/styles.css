@@ -1,0 +1,123 @@
+/* styles.css */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0; 
+    padding: 20px;
+    background-color: #f4f7f6;
+}
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+h1 { 
+    text-align: center; 
+    color: #007bff;
+    margin-bottom: 30px;
+}
+h2 {
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* 卡片样式 */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+/* 消息区域 */
+.message-area { 
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.error { 
+    background-color: #ffdddd;
+    color: #d8000c;
+    border: 1px solid #d8000c;
+}
+.success { 
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* 表单样式 */
+.form-group {
+    margin-bottom: 15px;
+}
+.form-container label { 
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: 600;
+}
+.form-container input { 
+    width: 95%; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+.form-container input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+.form-actions button {
+    margin-right: 10px;
+}
+
+/* 表格样式 */
+#personnelTable { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+#personnelTable th, #personnelTable td { 
+    border: 1px solid #e9ecef; 
+    padding: 12px; 
+    text-align: left; 
+}
+#personnelTable th { 
+    background-color: #f8f9fa; 
+    color: #495057;
+    font-weight: 600;
+}
+#personnelTable tbody tr:nth-child(even) {
+    background-color: #fbfbfb;
+}
+#personnelTable td button {
+    margin-right: 5px;
+}

@@ -1,0 +1,18 @@
+# Node/npm 依赖
+/node_modules
+/dist
+/build
+
+# Python/Conda 依赖
+/__pycache__
+*.pyc
+.venv
+.conda
+/env
+
+# IDE 文件
+.vscode/
+.idea/
+
+# 敏感文件
+*.env

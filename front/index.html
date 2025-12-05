@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人员信息管理系统</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>人员信息管理系统</h1>
+    
+    <div id="message" class="message-area"></div>
+
+    <div class="card form-container">
+        <h2 id="formTitle">人员信息表单</h2>
+        <form id="personnelForm">
+            <input type="hidden" id="isEditing" value="false">
+            <input type="hidden" id="originalStudentId">
+            
+            <div class="form-group">
+                <label for="id">学号 (13位纯数字)</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tel">电话</label>
+                <input type="text" id="tel" name="tel" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hobby">爱好</label>
+                <input type="text" id="hobby" name="hobby" required>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" id="submitBtn" class="btn btn-primary">新增</button>
+                <button type="button" id="cancelBtn" class="btn btn-secondary" style="display:none;">取消修改</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- <div class="controls card">
+        <h2>人员信息列表</h2>
+        <button onclick="fetchPersonnelData()" class="btn btn-secondary">🔄 刷新列表</button>
+    </div> -->
+
+    <table id="personnelTable">
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>爱好</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
