@@ -75,7 +75,7 @@ def api_add(data: dict):
     """添加新条目 (POST /personnel/)"""
     url = get_full_url("/personnel/")
     try:
-        # requests.post 是同步操作
+        # requests.post同步操作
         response = requests.post(url, json=data, timeout=10.0)
         
         if response.status_code == 201:
@@ -83,7 +83,6 @@ def api_add(data: dict):
             print_success(f"人员添加成功! 学号: {person['id']}, 姓名: {person['name']}")
         else:
             print_failure(f"添加失败: {get_error_message(response)}")
-            
     except requests.exceptions.RequestException as e: 
         print_failure(f"网络请求失败: 无法连接到服务器 {BASE_URL}. 错误: {e}")
 

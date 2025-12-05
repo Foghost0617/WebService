@@ -15,14 +15,7 @@ const formTitle = document.getElementById('formTitle');
 const isEditingInput = document.getElementById('isEditing');
 const originalStudentIdInput = document.getElementById('originalStudentId');
 
-// ------------------------------------------------------------------
-// 通用函数
-// ------------------------------------------------------------------
 
-
-/**
- * 格式化时间字符串
- */
 function formatTime(timeStr) {
     if (!timeStr) return '';
     return new Date(timeStr).toLocaleString('zh-CN', { 
@@ -171,7 +164,6 @@ async function deletePersonnel(studentId, name) {
     if (!confirm(`确定要删除人员【${name}】 (学号: ${studentId}) 吗？此操作不可撤销！`)) {
         return;
     }
-
     const url = `${API_BASE_URL}/${studentId}`;
     try {
         await apiRequest(url, 'DELETE');
@@ -262,12 +254,9 @@ function resetFormState() {
     formTitle.textContent = '人员信息表单';
 }
 
-// ------------------------------------------------------------------
-// 事件监听器和初始化
-// ------------------------------------------------------------------
 
 form.addEventListener('submit', submitPersonnel);
 cancelBtn.addEventListener('click', resetFormState);
 
-// 页面加载完成后，获取数据
+// 初始加载数据
 window.onload = fetchPersonnelData;

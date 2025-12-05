@@ -8,8 +8,6 @@ from typing import List
 from database import *
 # 导入 Pydantic 模型
 from val import PersonnelCreate, PersonnelUpdate, PersonnelInDB, PersonnelCollection
-# 注意：PersonnelCollection 是用于列表响应的 Pydantic 模型，我们在 val.py 中定义它
-
 # 导入服务层函数
 from serve import *
 
@@ -43,7 +41,7 @@ def create_personnel_route(
     - **服务层检查学号唯一性。**
     - 成功返回 201 Created。
     """
-    # 直接调用服务层，服务层负责处理业务逻辑和异常（409冲突）
+    # 直接调用服务层，服务层负责处理业务逻辑和异常
     return create_personnel_service(db, person_in)
 
 
@@ -91,9 +89,8 @@ def get_all_personnel_route(
     return {"items": personnel_list, "count": len(personnel_list)}
 
 
-## =================================================================
-## 4. PUT /personnel/{student_id} (修改记录)
-## =================================================================
+
+## PUT /personnel/{student_id} (修改记录)
 @router.put(
     "/{student_id}",
     response_model=PersonnelInDB,

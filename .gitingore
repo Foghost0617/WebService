@@ -4,7 +4,7 @@
 /build
 
 # Python/Conda 依赖
-/__pycache__
+backend/__pycache__
 *.pyc
 .venv
 .conda

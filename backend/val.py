@@ -3,7 +3,7 @@ from typing import Optional, List, Dict, Any
 from datetime import datetime
 import re
 
-# 编译常用正则表达式，提高验证效率
+# 需要的正则表达式
 REGEX_STUDENT_ID = re.compile(r"^\d{13}$")
 REGEX_MOBILE = re.compile(r"^1\d{10}$")
 REGEX_EMAIL = re.compile(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
@@ -17,18 +17,16 @@ class PersonnelBase(BaseModel):
     tel: str = Field(..., description="手机号码 (11位数字)")
     hobby: str = Field(..., max_length=32, description="个人兴趣 (不超过32个中文字符)")
 
-    # 1. 验证学号 (13位纯数字)
+    # 验证学号 (13位纯数字)
     @field_validator('id', mode='before')
     @classmethod
     def validate_student_id(cls, value):
         if not isinstance(value, str):
             raise ValueError('学号必须是字符串')
-        
         # 检查非空和非空白，并使用去除空白后的值
         cleaned_value = value.strip()
         if not cleaned_value:
             raise ValueError('学号不能为空或只包含空格。')
-
         if not REGEX_STUDENT_ID.fullmatch(cleaned_value):
             raise ValueError('学号必须是13位纯数字')
         return cleaned_value # 返回去除空白的值
@@ -39,11 +37,9 @@ class PersonnelBase(BaseModel):
     def validate_mobile(cls, value):
         if not isinstance(value, str):
             raise ValueError('手机号码必须是字符串')
-        
         cleaned_value = value.strip()
         if not cleaned_value:
             raise ValueError('手机号码不能为空或只包含空格。')
-
         if not REGEX_MOBILE.fullmatch(cleaned_value):
             raise ValueError('手机号码必须是11位纯数字，且以1开头')
         return cleaned_value
@@ -54,26 +50,22 @@ class PersonnelBase(BaseModel):
     def validate_email(cls, value):
         if not isinstance(value, str):
             raise ValueError('邮箱必须是字符串')
-        
         cleaned_value = value.strip()
         if not cleaned_value:
             raise ValueError('邮箱不能为空或只包含空格。')
-            
         if not REGEX_EMAIL.fullmatch(cleaned_value):
             raise ValueError('邮箱格式不正确')
         return cleaned_value
 
-    # 4. 验证姓名和兴趣长度
+    # 验证姓名
     @field_validator('name', mode='before')
     @classmethod
     def validate_name_length(cls, value):
         if not isinstance(value, str):
             raise ValueError('姓名必须是字符串')
-
         cleaned_value = value.strip()
         if not cleaned_value:
             raise ValueError('姓名不能为空或只包含空格。')
-            
         # 简单检查，确保不超过8个中文字符
         if len(cleaned_value) > 8:
             raise ValueError('姓名不能超过8个中文字符')
@@ -102,9 +94,6 @@ class PersonnelBase(BaseModel):
 class PersonnelCreate(PersonnelBase):
     """新增人员时的请求体模型 (继承 Base，所有字段必填且非空白)"""
     pass
-
-
-# --- PersonnelUpdate (修改/所有字段可选) ---
 
 class PersonnelUpdate(BaseModel):
     """修改人员时的请求体模型 (所有字段可选)"""
